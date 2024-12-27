@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.pytest_.input.test_web_scraping &mdash; share_portfolio documentations 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            share_portfolio documentations
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">share_portfolio documentations</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tests.pytest_.input.test_web_scraping</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.pytest_.input.test_web_scraping</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module for testing web scraping functionality.</span>
+
+<span class="sd">This module runs test cases for web scraping methods like:</span>
+
+<span class="sd">- `scrape_yahoo_finance`</span>
+<span class="sd">- `scrape_dividend_yahoo_finance`</span>
+<span class="sd">- `scrape_financials_yahoo_finance`</span>
+
+<span class="sd">Usage:</span>
+<span class="sd">    Run the script directly to execute the test cases:</span>
+<span class="sd">    $ python test_web_scraping.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">src.input.web_scraping</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="c1"># Test for the function scrape_yahoo_finance</span>
+<div class="viewcode-block" id="test_scrape_yahoo_finance">
+<a class="viewcode-back" href="../../../../tests.pytest_.input.html#tests.pytest_.input.test_web_scraping.test_scrape_yahoo_finance">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;src.input.web_scraping.scrape_yahoo_finance&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_scrape_yahoo_finance</span><span class="p">(</span><span class="n">mock_scrape_yahoo</span><span class="p">):</span>
+    <span class="c1"># Simuler la valeur de retour</span>
+    <span class="n">mock_scrape_yahoo</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Crédit Agricole S.A. (ACA.PA)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Stock Symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;ACA.PA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Current Price&quot;</span><span class="p">:</span> <span class="s2">&quot;12.91&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Change (%)&quot;</span><span class="p">:</span> <span class="s2">&quot;(-0.88%)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Change&quot;</span><span class="p">:</span> <span class="s2">&quot;-0.11&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Appeler la fonction simulée</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">scrape_yahoo_finance</span><span class="p">(</span><span class="s2">&quot;ACA.PA&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Vérifications</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Crédit Agricole S.A. (ACA.PA)&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Stock Symbol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ACA.PA&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Current Price&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;12.91&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Change (%)&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;(-0.88%)&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Change&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-0.11&quot;</span></div>
+
+
+
+<span class="c1"># Test for the function scrape_dividend_yahoo_finance</span>
+<div class="viewcode-block" id="test_scrape_dividend_yahoo_finance">
+<a class="viewcode-back" href="../../../../tests.pytest_.input.html#tests.pytest_.input.test_web_scraping.test_scrape_dividend_yahoo_finance">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;src.input.web_scraping.scrape_dividend_yahoo_finance&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_scrape_dividend_yahoo_finance</span><span class="p">(</span><span class="n">mock_scrape_dividend</span><span class="p">):</span>
+    <span class="c1"># Simuler la valeur de retour</span>
+    <span class="n">mock_scrape_dividend</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Currency&quot;</span><span class="p">:</span> <span class="s2">&quot;Currency in EUR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Dividends&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;May 29, 2024&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1.05 Dividend&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;May 30, 2023&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1.05 Dividend&quot;</span><span class="p">},</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Appeler la fonction simulée</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">scrape_dividend_yahoo_finance</span><span class="p">(</span><span class="s2">&quot;ACA.PA&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Vérifications</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Currency&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Currency in EUR&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Dividends&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;May 29, 2024&quot;</span></div>
+
+
+
+<span class="c1"># Test for the function scrape_financials_yahoo_finance</span>
+<div class="viewcode-block" id="test_scrape_financials_yahoo_finance">
+<a class="viewcode-back" href="../../../../tests.pytest_.input.html#tests.pytest_.input.test_web_scraping.test_scrape_financials_yahoo_finance">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;src.input.web_scraping.scrape_financials_yahoo_finance&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_scrape_financials_yahoo_finance</span><span class="p">(</span><span class="n">mock_scrape_financials</span><span class="p">):</span>
+    <span class="c1"># Simuler la valeur de retour</span>
+    <span class="n">mock_scrape_financials</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Currency&quot;</span><span class="p">:</span> <span class="s2">&quot;Currency in EUR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Financials&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Total Revenue&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;24,307,000.00&quot;</span><span class="p">,</span> <span class="s2">&quot;23,455,000.00&quot;</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Pretax Income&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;9,928,000.00&quot;</span><span class="p">,</span> <span class="s2">&quot;9,546,000.00&quot;</span><span class="p">]},</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Appeler la fonction simulée</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">scrape_financials_yahoo_finance</span><span class="p">(</span><span class="s2">&quot;ACA.PA&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Vérifications</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Currency&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Currency in EUR&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Financials&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Total Revenue&quot;</span></div>
+
+
+
+<span class="c1"># Example of using a fixture</span>
+<div class="viewcode-block" id="mock_response">
+<a class="viewcode-back" href="../../../../tests.pytest_.input.html#tests.pytest_.input.test_web_scraping.mock_response">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">mock_response</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Crédit Agricole S.A. (ACA.PA)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Current Price&quot;</span><span class="p">:</span> <span class="s2">&quot;12.91&quot;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<span class="c1"># Test using a fixture</span>
+<div class="viewcode-block" id="test_scrape_with_fixture">
+<a class="viewcode-back" href="../../../../tests.pytest_.input.html#tests.pytest_.input.test_web_scraping.test_scrape_with_fixture">[docs]</a>
+<span class="k">def</span> <span class="nf">test_scrape_with_fixture</span><span class="p">(</span><span class="n">mock_response</span><span class="p">):</span>
+    <span class="c1"># Utiliser les données simulées de la fixture</span>
+    <span class="k">assert</span> <span class="n">mock_response</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Crédit Agricole S.A. (ACA.PA)&quot;</span>
+    <span class="k">assert</span> <span class="n">mock_response</span><span class="p">[</span><span class="s2">&quot;Current Price&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;12.91&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mathieu LIN.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
